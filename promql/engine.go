@@ -4420,9 +4420,7 @@ func extendFloats(floats []FPoint, mint, maxt int64, smoothed bool) []FPoint {
 
 	// Calculate the number of elements from the original slice to include.
 	count := lastSampleIndex - firstSampleIndex + 1
-	if count < 0 {
-		count = 0
-	}
+	count = max(count, 0)
 
 	// We need space for 'left', the slice elements, and 'right'.
 	out := make([]FPoint, 0, count+2)
